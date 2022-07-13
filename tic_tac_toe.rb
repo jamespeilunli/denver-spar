@@ -31,13 +31,13 @@ class TicTacToe
     return "o" if forward_diagonal == @o_win || backward_diagonal == @o_win
     return "x" if forward_diagonal == @x_win || backward_diagonal == @x_win
 
-    # if no row, column, or diagonal is a winning string,
+    # if no row, column, or diagonal is a winning sequence,
     # and there are spaces on the board, then the game is unfinished
     @board.each do |row|
       return "unfinished" if row.include? " "
     end
     
-    # if no row, column, or diagonal is a winning string, 
+    # if no row, column, or diagonal is a winning sequence, 
     # and there are only o's and x's on the board, then the game is a draw
     return "draw"
   end
