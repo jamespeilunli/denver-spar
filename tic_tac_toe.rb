@@ -32,6 +32,20 @@ class TicTacToe
     end
 
     # diagonal checks (check both diagonals and see if one causes a win)
+    diagonals = [[], []]
+    @size.times do |i|
+      diagonals[0].push @board[i][i]
+      diagonals[1].push @board[i][@size-i-1]
+    end
+    diagonals.each do |diagonal|
+      if diagonal == @o_win
+        return "o"
+      elsif diagonal == @x_win
+        return "x"
+      elsif diagonal.include? " "
+        unfinished = true
+      end
+    end
 
     # if no row, column, or diagonal is a winning string,
     # and there are spaces on the board, then the game is unfinished
