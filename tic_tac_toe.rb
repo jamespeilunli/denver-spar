@@ -21,6 +21,15 @@ class TicTacToe
     end
 
     # column checks (go through each column and check if it causes a win)
+    @board.transpose.each do |column|
+      if column == @o_win
+        return "o"
+      elsif column == @x_win
+        return "x"
+      elsif column.include? " "
+        unfinished = true
+      end
+    end
 
     # diagonal checks (check both diagonals and see if one causes a win)
 

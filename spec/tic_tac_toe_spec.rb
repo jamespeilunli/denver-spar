@@ -54,7 +54,7 @@ describe TicTacToe do
     end
   end
 
-  xdescribe "columns" do
+  describe "columns" do
     it "returns the correct winner when match found on the first column" do
       board_o = [
         ["o", "x", " "],
@@ -168,7 +168,7 @@ describe TicTacToe do
       expect(TicTacToe.new(board).winner).to eq("o")
     end
 
-    xit "returns the correct winner when match found on a column" do
+    it "returns the correct winner when match found on a column" do
       board = [
         ["x", " ", " ", "o", " "],
         ["x", "x", " ", "o", " "],
