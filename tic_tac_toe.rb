@@ -15,7 +15,7 @@ class TicTacToe
     end
 
     # column checks (go through each column and check if it causes a win)
-    @board.transpose.each do |column|
+    @board.transpose.each do |column| # transpose switches rows with columns
       return "o" if column == @o_win
       return "x" if column == @x_win
     end
@@ -23,8 +23,8 @@ class TicTacToe
     # diagonal checks (check both diagonals and see if one causes a win)
     diagonals = [[], []]
     @size.times do |i|
-      diagonals[0].push @board[i][i]
-      diagonals[1].push @board[i][@size-i-1]
+      diagonals[0].push @board[i][i] # forward diagonal (top to bottom, left to right)
+      diagonals[1].push @board[i][@size-i-1] # backward diagonal (top to bottom, right to left)
     end
 
     diagonals.each do |diagonal|
