@@ -2,9 +2,9 @@ class TicTacToe
   def initialize(board)
     @board = board
     @size = board.length
-    # strings that cause a win (e.g. if @o_win is found with one of the checks, o wins)
-    @o_win = "o"*@size
-    @x_win = "x"*@size
+    # arrays that cause a win (e.g. if @o_win is found with one of the checks, o wins)
+    @o_win = ["o"]*@size
+    @x_win = ["x"]*@size
   end
 
   def winner
