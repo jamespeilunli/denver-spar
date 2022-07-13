@@ -8,29 +8,28 @@ class TicTacToe
   end
 
   def winner
-    # row checks (go through each row and check if it causes a win)
+    # row checks (go through each row and check if it causes a win; return accordingly)
     @board.each do |row|
       return "o" if row == @o_win
       return "x" if row == @x_win
     end
 
-    # column checks (go through each column and check if it causes a win)
+    # column checks (go through each column and check if it causes a win; return accordingly)
     @board.transpose.each do |column| # transpose switches rows with columns
       return "o" if column == @o_win
       return "x" if column == @x_win
     end
 
-    # diagonal checks (check both diagonals and see if one causes a win)
-    diagonals = [[], []]
-    @size.times do |i|
-      diagonals[0].push @board[i][i] # forward diagonal (top to bottom, left to right)
-      diagonals[1].push @board[i][@size-i-1] # backward diagonal (top to bottom, right to left)
+    # diagonal checks
+    forward_diagonal = []
+    backward_diagonal = []
+    @size.times do |i| # generate diagonals
+      forward_diagonal.push @board[i][i] # diagonal goes from top to bottom, left to right; so both indexes increase 
+      backward_diagonal.push @board[i][@size-i-1] # diagonal goes from top to bottom, right to left; so first index increases, second index decreases
     end
-
-    diagonals.each do |diagonal|
-      return "o" if diagonal == @o_win
-      return "x" if diagonal == @x_win
-    end
+    # check both diagonals and see if one causes a win; return accordingly
+    return "o" if forward_diagonal == @o_win || backward_diagonal == @o_win
+    return "x" if forward_diagonal == @x_win || backward_diagonal == @x_win
 
     # if no row, column, or diagonal is a winning string,
     # and there are spaces on the board, then the game is unfinished
