@@ -24,8 +24,8 @@ class TicTacToe
     forward_diagonal = []
     backward_diagonal = []
     @size.times do |i| # generate diagonals
-      forward_diagonal.push @board[i][i] # diagonal goes from top to bottom, left to right; so both indexes increase 
-      backward_diagonal.push @board[i][@size-i-1] # diagonal goes from top to bottom, right to left; so first index increases, second index decreases
+      forward_diagonal.push @board[i][@size-i-1] # diagonal goes from top to bottom, right to left; so first index increases, second index decreases
+      backward_diagonal.push @board[i][i] # diagonal goes from top to bottom, left to right; so both indexes increase 
     end
     # check both diagonals and see if one causes a win; return accordingly
     return "o" if forward_diagonal == @o_win || backward_diagonal == @o_win
