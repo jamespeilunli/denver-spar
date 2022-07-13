@@ -49,7 +49,7 @@ class TicTacToe
 
     # if no row, column, or diagonal is a winning string,
     # and there are spaces on the board, then the game is unfinished
-    return "unfinished"
+    return "unfinished" if unfinished
     
     # if no row, column, or diagonal is a winning string, 
     # and there are only o's and x's on the board, then the game is a draw

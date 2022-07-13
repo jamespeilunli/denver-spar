@@ -108,7 +108,7 @@ describe TicTacToe do
   end
 
   describe "diagonals" do
-    xit "returns the correct winner when match found in backward diagonal" do
+    it "returns the correct winner when match found in backward diagonal" do
       board_o = [
         ["o", "x", " "],
         ["x", "o", " "],
@@ -143,7 +143,7 @@ describe TicTacToe do
     end
   end
 
-  xdescribe "draws" do
+  describe "draws" do
     it "returns 'draw' when the board is a draw" do
       board = [
         ["o", "x", "o"],
@@ -206,7 +206,7 @@ describe TicTacToe do
   end
 
   describe "unfinished" do
-    xit "returns 'unfinished' when the board not finished yet" do
+    it "returns 'unfinished' when the board not finished yet" do
       board = [
         ["o", "x", "o"],
         ["o", "x", "x"],
