@@ -1,83 +1,44 @@
 class TicTacToe
   def initialize(board)
     @board = board
+    @size = board.length
+    # sequences of o and x that cause a win (e.g. if @o_win is found with one of the checks, o wins)
+    @o_win = ["o"]*@size
+    @x_win = ["x"]*@size
   end
 
   def winner
-    row1 = @board[0]
-    row2 = @board[1]
-    row3 = @board[2]
-
-    # row checks
-
-    if row1[0] == "o" && row1[1] == "o" && row1[2] == "o"
-      return "o"
+    # row checks (go through each row and check if it causes a win; return accordingly)
+    @board.each do |row|
+      return "o" if row == @o_win
+      return "x" if row == @x_win
     end
 
-    if row2[0] == "o" && row2[1] == "o" && row2[2] == "o"
-      return "o"
-    end
-
-    if row3[0] == "o" && row3[1] == "o" && row3[2] == "o"
-      return "o"
-    end
-
-    if row1[0] == "x" && row1[1] == "x" && row1[2] == "x"
-      return "x"
-    end
-
-    if row2[0] == "x" && row2[1] == "x" && row2[2] == "x"
-      return "x"
-    end
-
-    if row3[0] == "x" && row3[1] == "x" && row3[2] == "x"
-      return "x"
-    end
-
-    # column checks
-
-    if row1[0] == "o" && row2[0] == "o" && row3[0] == "o"
-      return "o"
-    end
-
-    if row1[1] == "o" && row2[1] == "o" && row3[1] == "o"
-      return "o"
-    end
-
-    if row1[2] == "o" && row2[2] == "o" && row3[2] == "o"
-      return "o"
-    end
-
-    if row1[0] == "x" && row2[0] == "x" && row3[0] == "x"
-      return "x"
-    end
-
-    if row1[1] == "x" && row2[1] == "x" && row3[1] == "x"
-      return "x"
-    end
-
-    if row1[2] == "x" && row2[2] == "x" && row3[2] == "x"
-      return "x"
+    # column checks (go through each column and check if it causes a win; return accordingly)
+    @board.transpose.each do |column| # transpose switches rows with columns
+      return "o" if column == @o_win
+      return "x" if column == @x_win
     end
 
     # diagonal checks
-
-    if row1[0] == "o" && row2[1] == "o" && row3[2] == "o"
-      return "o"
+    forward_diagonal = []
+    backward_diagonal = []
+    @size.times do |i| # generate diagonals
+      forward_diagonal.push @board[i][@size-i-1] # diagonal goes from top to bottom, right to left; so first index increases, second index decreases
+      backward_diagonal.push @board[i][i] # diagonal goes from top to bottom, left to right; so both indexes increase 
     end
+    # check both diagonals and see if one causes a win; return accordingly
+    return "o" if forward_diagonal == @o_win || backward_diagonal == @o_win
+    return "x" if forward_diagonal == @x_win || backward_diagonal == @x_win
 
-    if row1[2] == "o" && row2[1] == "o" && row3[0] == "o"
-      return "o"
+    # if no row, column, or diagonal is a winning sequence,
+    # and there are spaces on the board, then the game is unfinished
+    @board.each do |row|
+      return "unfinished" if row.include? " "
     end
-
-    if row1[0] == "x" && row2[1] == "x" && row3[2] == "x"
-      return "x"
-    end
-
-    if row1[2] == "x" && row2[1] == "x" && row3[0] == "x"
-      return "x"
-    end
-
+    
+    # if no row, column, or diagonal is a winning sequence, 
+    # and there are only o's and x's on the board, then the game is a draw
     return "draw"
   end
 end
