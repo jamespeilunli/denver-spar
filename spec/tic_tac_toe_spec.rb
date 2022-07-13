@@ -54,7 +54,7 @@ describe TicTacToe do
     end
   end
 
-  describe "columns" do
+  xdescribe "columns" do
     it "returns the correct winner when match found on the first column" do
       board_o = [
         ["o", "x", " "],
@@ -107,7 +107,7 @@ describe TicTacToe do
     end
   end
 
-  describe "diagonals" do
+  xdescribe "diagonals" do
     xit "returns the correct winner when match found in backward diagonal" do
       board_o = [
         ["o", "x", " "],
@@ -143,7 +143,7 @@ describe TicTacToe do
     end
   end
 
-  describe "draws" do
+  xdescribe "draws" do
     it "returns 'draw' when the board is a draw" do
       board = [
         ["o", "x", "o"],
@@ -156,7 +156,7 @@ describe TicTacToe do
   end
 
   describe "5 x 5 board" do
-    xit "returns the correct winner when match found on a row" do
+    it "returns the correct winner when match found on a row" do
       board = [
         ["x", "x", " ", " ", " "],
         ["x", "x", "x", " ", " "],

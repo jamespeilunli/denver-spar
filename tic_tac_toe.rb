@@ -10,6 +10,15 @@ class TicTacToe
   def winner
     unfinished = false
     # row checks (go through each row and check if it causes a win)
+    @board.each do |row|
+      if row == @o_win
+        return "o"
+      elsif row == @x_win
+        return "x"
+      elsif row.include? " "
+        unfinished = true
+      end
+    end
 
     # column checks (go through each column and check if it causes a win)
 
